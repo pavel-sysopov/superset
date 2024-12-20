@@ -48,7 +48,7 @@ const containerStyle = (theme: SupersetTheme) => css`
     color: ${theme.colors.grayscale.base};
     margin-left: 0;
     &:hover {
-      color: ${theme.colors.primary.dark1};
+      color: ${theme.colorPrimaryText};
     }
 
     &[disabled],
@@ -69,12 +69,12 @@ const verticalStyle = (theme: SupersetTheme, width: number) => css`
   width: ${width - 1}px;
   bottom: 0;
 
-  padding: ${theme.gridUnit * 4}px;
-  padding-top: ${theme.gridUnit * 6}px;
+  padding: ${theme.sizeUnit * 4}px;
+  padding-top: ${theme.sizeUnit * 6}px;
 
   background: linear-gradient(
     ${rgba(theme.colors.grayscale.light5, 0)},
-    ${theme.colors.grayscale.light5} ${theme.opacity.mediumLight}
+    ${theme.colors.grayscale.light5} 60%
   );
 
   & > button {
@@ -82,7 +82,7 @@ const verticalStyle = (theme: SupersetTheme, width: number) => css`
   }
 
   & > .filter-apply-button {
-    margin-bottom: ${theme.gridUnit * 3}px;
+    margin-bottom: ${theme.sizeUnit * 3}px;
   }
 `;
 
@@ -91,7 +91,7 @@ const horizontalStyle = (theme: SupersetTheme) => css`
   margin-left: auto;
   && > .filter-clear-all-button {
     text-transform: capitalize;
-    font-weight: ${theme.typography.weights.normal};
+    font-weight: ${theme.fontWeightNormal};
   }
   & > .filter-apply-button {
     &[disabled],

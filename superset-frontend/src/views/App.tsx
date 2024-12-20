@@ -27,6 +27,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { GlobalStyles } from 'src/GlobalStyles';
 import ErrorBoundary from 'src/components/ErrorBoundary';
+import Layout from 'src/components/Layout';
 import Loading from 'src/components/Loading';
 import { Layout } from 'src/components';
 import Menu from 'src/features/home/Menu';
