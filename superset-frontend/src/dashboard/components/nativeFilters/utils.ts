@@ -27,8 +27,6 @@ import {
   getChartMetadataRegistry,
   QueryFormData,
   t,
-  isFeatureEnabled,
-  FeatureFlag,
 } from '@superset-ui/core';
 import { LayoutItem } from 'src/dashboard/types';
 import extractUrlParams from 'src/dashboard/util/extractUrlParams';
@@ -148,22 +146,10 @@ export function getExtraFormData(
 }
 
 export function nativeFilterGate(behaviors: Behavior[]): boolean {
-  const hasNativeFilter = behaviors.includes(Behavior.NativeFilter);
-
-  // If it's not a native filter, always allow
-  if (!hasNativeFilter) {
-    return true;
-  }
-
-  // Native filters are not allowed when feature flags are disabled
-  if (!isFeatureEnabled(FeatureFlag.DASHBOARD_NATIVE_FILTERS)) {
-    return false;
-  }
-
-  // When feature flag is enabled:
-  // - Pure native filters are not allowed
-  // - Native filters with interactive chart behavior are allowed
-  return behaviors.includes(Behavior.InteractiveChart);
+  return (
+    !behaviors.includes(Behavior.NativeFilter) ||
+    behaviors.includes(Behavior.InteractiveChart)
+  );
 }
 
 export const findTabsWithChartsInScope = (
