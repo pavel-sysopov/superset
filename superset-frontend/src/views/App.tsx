@@ -83,13 +83,11 @@ const App = () => (
         {routes.map(({ path, Component, props = {}, Fallback = Loading }) => (
           <Route path={path} key={path}>
             <Suspense fallback={<Fallback />}>
-              <Layout.Content>
-                <div style={{ padding: '16px' }}>
-                  <ErrorBoundary>
-                    <Component user={bootstrapData.user} {...props} />
-                  </ErrorBoundary>
-                </div>
-              </Layout.Content>
+              <Layout>
+                <ErrorBoundary>
+                  <Component user={bootstrapData.user} {...props} />
+                </ErrorBoundary>
+              </Layout>
             </Suspense>
           </Route>
         ))}
